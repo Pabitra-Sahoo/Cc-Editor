@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 header{
@@ -10,7 +11,6 @@ header{
   left: 0;
   width: 100%;
   padding: 20px 50px;
-  
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,27 +22,34 @@ body{
   font-family: "Roboto", "sans-serif";
   background: #0b0f14;
 
+
 }
 
 .join{
   height: 100vh;
-  background: linear-gradient(10deg,#3c5adc 30%, #339ae9 70%);
+  background: transparent;
 
   .logo{
     margin-bottom: 1.5rem;
-    color: #f3f1e7;
-    font-size: 2.6rem;
+    color: #f5eecb;
+    font-size: 3rem;
     user-select: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+   
+  .c{
+    color: #7df7f5;
   }
 
   .navigation a {
     position: relative;
-    font-size: 1.3rem;
-    color: #f8e9ce;
+    font-size: 1.6rem;
+    color: #98f8f5;
     text-decoration: none;
     font-weight: 500;
     margin-left: 40px;
     cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
   .navigation a::after{
@@ -50,13 +57,15 @@ body{
     position: absolute;
     width: 100%;
     height: 3px;
-    background: #f8e9ce;
+    background: #98f8f5;
     border-width: 5px;
     bottom: -5px;
     left: 0;
     transform-origin: right;
     transform: scaleX(0);
     transition: transform 0.3s;
+  
+  
   }
 
   .navigation a:hover:after {
@@ -69,87 +78,99 @@ body{
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(10deg,#3c5adc 30%, #339ae9 70%);
+  background: url(fbg.png)
+  no-repeat;
+  background-size: cover;
+  background-position: center;
 
 
 
 .join-form{
-  background-color: #242a33;
+  background: transparent;
   padding: 2rem;
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
   text-align: center;
-  width: 300px;
+  width: 350px;
+  height: 350px;
+  backdrop-filter: blur(20px);
+  box-shadow: 10px 14px 20px #062339;
 
   h1{
+    font-size: 30px;
+    font-weight: bolder;
     margin-bottom: 1.5rem;
-    color: #4531fc;
+    color: #7fc9c8;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
-  .rid{
-    background-color: #1e2229;
-    color: #f8e9ce;
-    border: none;
-
-    transition: background-color 0.3s ease;
-
-    &:hover{
-     background-color: #17191c;
-     }
-
-  }
-
-  .nm{
-    background-color: #1e2229;
-    color: #f8e9ce;
-    border: none;
-    
-    transition: background-color 0.3s ease;
-
-    &:hover{
-     background-color: #17191c;
-     }
-
-  }
+  
 
   input{
     width: 100%;
     padding:.75rem;
     margin-bottom: 1rem;
-    border:1px solid #ddd;
+    border:2px solid rgba(133, 107, 188, 0.5);
     border-radius: 4px;
     font-size: 1rem;
-  }
-
-
-  button{
-    width: 100%;
-    padding: .75rem;
-    background-color:  #078ca6;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
+    background: transparent;
     transition: background-color 0.3s ease;
+    outline: none;
+    border-radius: 15px;
+    font-size: 15px;
+    color: #f8e9ce;
+    padding: 10px;
+    transition: all 0.4s;
+    margin-bottom: 1.5rem;
+    &:hover{
+      border:2px solid rgba(172, 135, 252, 0.5);
+      background-color: #7f61cf35;
+    }
+  }
+  input::placeholder{
+    color:  rgba(211, 206, 241, 0.407);
+  }
+  input:focus{
+    border:2px solid rgb(119, 149, 168);
+   
+  }
+  button{
+    margin-top: 1rem;
+    width: 100%;
+  height: 40px;
+    background-color: #46a7abcc;
+    box-shadow:  1px 1px 10px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+    color: rgb(229, 215, 189);
+    backdrop-filter: blue(20px);
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transform: translateY(-5px);
     margin-bottom: .5rem;
 
     &:hover{
-      background-color:  #299b15;
+      background-color:  #c79dea52;
+      color: #13d1ea;
      
     }
+  }
+  .button:active{
+    transform: translateY(0px);
   }
 
   .uid{
   
     position: relative;
     font-size: 1rem;
-    color: #7f9376;
+    color: #7bada3;
     cursor: pointer;
     
     &:hover{
-    color: #a2cf94;
+    color: #45ee39;
      
     }
   }
@@ -158,10 +179,10 @@ body{
     content: "";
     position: absolute;
     width: 100%;
-    height: 1px;
-    background:  #b9d5af;
+    height: 1.5px;
+    background:   #45ee39;
     border-width: 2px;
-    bottom: -5px;
+    bottom: 0px;
     left: 0;
     transform-origin: right;
     transform: scaleX(0);
@@ -341,5 +362,15 @@ position: relative;
   font-size: 20px;
   height: 250px;
   overflow-y: auto;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #73afd1;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 

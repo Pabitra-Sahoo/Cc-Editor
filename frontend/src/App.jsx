@@ -107,22 +107,26 @@ const App = () => {
     return (
       <div className="join">
         <header>
-          <h2 className="logo">CodeConnect</h2>
+          <h2 className="logo"><b className="c">C</b>ode<b className="c">C</b>onnect</h2>
           <nav className="navigation">
-            <a href="#">About </a>
-            <a href="#">Contact </a>
+            <a href="#"><b>About</b></a>
+            <a href="#"><b>Developers</b></a>
           </nav>
         </header>
         <div className="join-cointainer">
           <div className="join-form">
-            <h1>Create-Room</h1>
+            <h1>Code-Room</h1>
             <input className="rid" type="text" placeholder="Room Id" value={roomId} onChange={e => setRoomId(e.target.value)} />
             
             <input className="nm" type="text" placeholder="Your Name" value={userName} onChange={e => setUserName(e.target.value)} />
             <button onClick={joinRoom}>Join Room</button>
-            <a className="uid"onClick={generateUniqueId}>Generate room id here.</a>
+            <a className="uid"onClick={generateUniqueId}>Generate unique room id.</a>
+           
+          
+       
           </div>
         </div>
+        <footer>Developed & Maintained by Team-Seven © 2025</footer>
       </div>
     );
   }
