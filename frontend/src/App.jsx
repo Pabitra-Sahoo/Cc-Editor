@@ -110,10 +110,10 @@ const App = () => {
             <b className="c">C</b>ode<b className="c">C</b>onnect
           </h2>
           <nav className="navigation">
-            <a href="#">
+            <a href="https://github.com/Pabitra-Sahoo/CodeConnect">
               <b>About</b>
             </a>
-            <a href="#">
+            <a href="https://pabitra-sahoo.github.io/Code-Connect-Team/">
               <b>Developers</b>
             </a>
           </nav>
@@ -137,8 +137,9 @@ const App = () => {
               onChange={(e) => setUserName(e.target.value)}
             />
             <button onClick={joinRoom}>Join Room</button>
+            <a className="msg">don't have a room id? </a>
             <a className="uid" onClick={generateUniqueId}>
-              Generate unique room id.
+              Click here
             </a>
           </div>
         </div>
@@ -158,26 +159,39 @@ const App = () => {
           {copySuccess && <span className="copy-success">{copySuccess}</span>}
         </div>
         <h3>Users in Room:</h3>
-        <ul>
-          {users.map((user, index) => (
-            <li key={index}>{user.slice(0, 8)}</li>
-          ))}
-        </ul>
-        <h3>Select Language:</h3>
+
+        <div className="scroll-bg">
+          <div className="scroll-div">
+            <ul>
+              {users.map((user, index) => (
+                <li key={index}>{user.slice(0, 8)}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div className="type">
+          {" "}
+          <p className="typing-indicator">{typing}</p>
+        </div>
+
+        <h3 className="lang">Select Language:</h3>
         <select
           className="language-selector"
           value={language}
           onChange={handleLanguageChange}
         >
-          <option value="javascript">javascript</option>
-          <option value="python">python</option>
-          <option value="java">java</option>
+          <option value="javascript">JavaScript</option>
+          <option value="python">Python</option>
+          <option value="java">Java</option>
           <option value="cpp">C++</option>
+          <option value="c">C</option>
+          <option value="csharp">C#</option>
+          <option value="php">PHP</option>
+          <option value="go">Go</option>
         </select>
         <button className="run-btn" onClick={runCode}>
           <b>Run</b>
         </button>
-        <p className="typing-indicator">{typing}</p>
         <button className="leave-button" onClick={leaveRoom}>
           Leave Room
         </button>
