@@ -1,8 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Inconsolata:wght@200..900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Fira Code", monospace;
 }
 
 header {
@@ -160,6 +162,7 @@ body {
 
 .msg {
   color: #a985ab;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .join-form .uid {
@@ -167,6 +170,7 @@ body {
   font-size: 1rem;
   color: #a985ab;
   cursor: pointer;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .join-form .uid:hover {
@@ -424,9 +428,10 @@ footer {
 
   .run-btn {
     margin-left: 13rem;
+    position: relative;
     top: 17.5px;
     margin-bottom: 2rem;
-    width: 47%;
+    width: 45%;
     left: -7px;
     padding: 0.75rem;
   }
@@ -435,8 +440,8 @@ footer {
   }
 
   .sidebar .leave-button {
-    position: absolute;
-    width: 45%;
+    position: relative;
+    width: 40%;
     padding: 0.75rem;
     background-color: #ef301b;
     color: rgb(0, 0, 0);
@@ -447,6 +452,7 @@ footer {
     cursor: pointer;
     transition: background-color 0.3s ease;
     left: 7px;
+    bottom: 3.75rem;
   }
 
   .navigation a {

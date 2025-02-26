@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import io from "socket.io-client";
 import Editor from "@monaco-editor/react";
+import { Toaster, toast } from "react-hot-toast";
 
 const socket = io("https://codeconnect-by-team-seven.onrender.com");
 
@@ -33,10 +34,12 @@ const App = () => {
 
     socket.on("languageUpdate", (newLanguage) => {
       setLanguage(newLanguage);
+      toast.success("Language Updated");
     });
 
     socket.on("codeResponse", (respose) => {
       setOutPut(respose.run.output);
+      toast.success("Code executed successfully");
     });
 
     return () => {
@@ -63,6 +66,10 @@ const App = () => {
     if (roomId && userName) {
       socket.emit("join", { roomId, userName });
       setJoined(true);
+      setCode(
+        "// Team-Seven: JavaScript-coding the web, one elegant line at a time.\nfunction Connect() {\n  console.log('Hello, Devs!');\n}\nConnect();"
+      ); //default code snippet
+      toast.success("" + userName + " joined 🤝");
     }
   };
 
@@ -73,12 +80,13 @@ const App = () => {
     setUserName("");
     setCode("");
     setLanguage("javascript");
+    toast.success("" + userName + " Left 👋");
   };
 
   const copyRoomId = () => {
     navigator.clipboard.writeText(roomId);
-    setCopySucccess("Copied!");
-    setTimeout(() => setCopySucccess(""), 2000);
+    toast.success("Room ID copied to clipboard📋");
+    setTimeout(() => toast.dismiss(), 2000);
   };
 
   const handlecodechange = (newCode) => {
@@ -90,21 +98,47 @@ const App = () => {
   const handleLanguageChange = (e) => {
     const newLanguage = e.target.value;
     setLanguage(newLanguage);
+
+    const defaultCodeSnippets = {
+      javascript:
+        "// Team-Seven: JavaScript-coding the web, one elegant line at a time.\nfunction Connect() {\n  console.log('Hello, Devs!');\n}\nConnect();",
+
+      python:
+        "# Team_Seven: Python-scripting dreams, one line at a time.\nprint('Hello, Devs!')",
+
+      java: '// Team_Seven: Java - engineering excellence, one line at a time.\npublic class Main {\n  public static void main(String[] args) {\n    System.out.println("Hello, Devs!");\n  }\n}',
+
+      c: '// Team_Seven: C – crafting efficient code, one line at a time.\nint main() {\n  printf("Hello, Devs!");\n  return 0;\n}',
+
+      cpp: '// Team_Seven: C++ – where precision meets power, line by line.\n#include <iostream>\nusing namespace std;\nint main() {\n  std::cout << "Hello, Devs!" << std::endl;\n  return 0;\n}',
+
+      csharp:
+        '// Team_Seven: C# – orchestrating code, elegantly.\nusing System;\nclass MainClass {\n  public static void Main(string[] args) {\n    Console.WriteLine("Hello, Devs!");\n  }\n}',
+
+      go: '// Team_Seven: Go – powering efficiency, one line at a time.\npackage main\nimport "fmt"\nfunc main() {\n  fmt.Println("Hello, Devs!")\n}',
+    };
+
+    setLanguage(newLanguage);
+    setCode(defaultCodeSnippets[newLanguage] || "");
+
     socket.emit("languageChange", { roomId, language: newLanguage });
   };
 
   const runCode = () => {
     socket.emit("compileCode", { code, roomId, language, version });
+    toast.success("Code Running...");
   };
 
   const generateUniqueId = () => {
     const uniqueId = Math.random().toString(36).substr(2, 9);
     setRoomId(uniqueId);
+    toast.success("Room Id Generated!");
   };
 
   if (!joined) {
     return (
       <div className="join">
+        <Toaster position="top-center" reverseOrder={false} />
         <header>
           <h2 className="logo">
             <b className="c">C</b>ode<b className="c">C</b>onnect
@@ -127,6 +161,8 @@ const App = () => {
               placeholder="Room Id"
               value={roomId}
               onChange={(e) => setRoomId(e.target.value)}
+              required
+              autoComplete="off"
             />
 
             <input
@@ -135,6 +171,8 @@ const App = () => {
               placeholder="Your Name"
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
+              required
+              autoComplete="off"
             />
             <button onClick={joinRoom}>Join Room</button>
             <a className="msg">don't have a room id? </a>
@@ -149,6 +187,7 @@ const App = () => {
   }
   return (
     <div className="editor-container">
+      <Toaster position="top-center" reverseOrder={false} />
       <div className="sidebar">
         <div className="room-info">
           <h2>Room ID:</h2>
@@ -164,7 +203,7 @@ const App = () => {
           <div className="scroll-div">
             <ul>
               {users.map((user, index) => (
-                <li key={index}>{user.slice(0, 8)}</li>
+                <li key={index}>{user.slice(0, 15)}</li>
               ))}
             </ul>
           </div>
@@ -186,7 +225,6 @@ const App = () => {
           <option value="cpp">C++</option>
           <option value="c">C</option>
           <option value="csharp">C#</option>
-          <option value="php">PHP</option>
           <option value="go">Go</option>
         </select>
         <button className="run-btn" onClick={runCode}>
