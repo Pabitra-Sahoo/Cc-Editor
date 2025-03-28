@@ -37,6 +37,8 @@ Additions:
 - 🔠 User Friendly & Responsive design for both Mobiles and Laptop
 - 🔄 Real-time Updates: Automatic updates for code changes, language selection, user activity
 - 🌐 Supports syntax highlighting for different programming languages
+- ✨ Notifications for varius updates
+- 💫Cross platform
 
 
 
